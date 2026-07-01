@@ -380,6 +380,8 @@ with st.sidebar:
         label_visibility="collapsed", index=["English","Hindi","Spanish","French","German"].index(st.session_state.lang))
     if lang != st.session_state.lang:
         st.session_state.lang = lang
+        st.session_state.chat_history = []  # clear history so LLM forgets previous language
+        st.session_state.messages = []      # clear displayed messages too
         st.rerun()
 
     st.markdown("<div class='fancy-divider'></div>", unsafe_allow_html=True)
